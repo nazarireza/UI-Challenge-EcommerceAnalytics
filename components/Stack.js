@@ -11,6 +11,8 @@ class Stack extends Component {
       top,
       bottom,
       centerItems,
+      hCenterItems,
+      vCenterItems,
       fill,
       children,
       flex,
@@ -19,12 +21,17 @@ class Stack extends Component {
       colorDark,
       colorNormal,
       colorLight,
+      white,
       clip,
       radius,
       circle,
       paddingSmall,
       paddingMedium,
-      paddingLarge
+      paddingLarge,
+      borderLight,
+      borderNormal,
+      borderDark,
+      border
     } = this.props;
 
     return (
@@ -35,6 +42,8 @@ class Stack extends Component {
           horizontal && styles.horizontal,
           absolute && styles.absolute,
           centerItems && styles.centerItems,
+          hCenterItems && styles.hCenterItems,
+          vCenterItems && styles.vCenterItems,
           absolute && fill && styles.fill,
           absolute && left && styles.left,
           absolute && right && styles.right,
@@ -43,13 +52,20 @@ class Stack extends Component {
           colorDark && styles.colorDark,
           colorNormal && styles.colorNormal,
           colorLight && styles.colorLight,
+          white && styles.white,
           highlight && styles.highlight,
           clip && styles.clip,
           radius && styles.radius,
           circle && styles.circle,
-          paddingSmall && styles.paddingSmall,
-          paddingMedium && styles.paddingMedium,
-          paddingLarge && styles.paddingLarge,
+          circle && { width: circle, height: circle },
+          !circle && paddingSmall && styles.paddingSmall,
+          !circle && paddingMedium && styles.paddingMedium,
+          !circle && paddingLarge && styles.paddingLarge,
+          borderLight && styles.borderLight,
+          borderNormal && styles.borderNormal,
+          borderDark && styles.borderDark,
+          (borderLight || borderNormal || borderDark) && {borderWidth: 1},
+          border && {borderWidth: border},
           style && style
         ]}>
         {children}
@@ -59,9 +75,7 @@ class Stack extends Component {
 }
 
 const styles = StyleSheet.create({
-  default: {
-    // padding: 5
-  },
+  default: {},
   horizontal: {
     flexDirection: 'row'
   },
@@ -70,6 +84,12 @@ const styles = StyleSheet.create({
   },
   centerItems: {
     alignItems: 'center',
+    justifyContent: 'center'
+  },
+  hCenterItems: {
+    alignItems: 'center'
+  },
+  vCenterItems: {
     justifyContent: 'center'
   },
   fill: {
@@ -102,6 +122,9 @@ const styles = StyleSheet.create({
   colorLight: {
     backgroundColor: '#D2D2D2'
   },
+  white: {
+    backgroundColor: 'white'
+  },
   clip: {
     overflow: 'hidden'
   },
@@ -120,6 +143,15 @@ const styles = StyleSheet.create({
   paddingLarge: {
     padding: 10
   },
+  borderLight: {
+    borderColor: '#D2D2D2'
+  },
+  borderNormal: {
+    borderColor: '#979797'
+  },
+  borderDark: {
+    borderColor: '#3D3D3D'
+  }
 });
 
 export default Stack;

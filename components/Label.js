@@ -12,7 +12,8 @@ class Label extends Component {
       style,
       colorDark,
       colorNormal,
-      colorLight
+      colorLight,
+      white
     } = this.props;
 
     return (
@@ -26,6 +27,7 @@ class Label extends Component {
           colorDark && styles.colorDark,
           colorNormal && styles.colorNormal,
           colorLight && styles.colorLight,
+          white && styles.white,
           style && style
         ]}>
         {children}
@@ -60,6 +62,9 @@ const styles = StyleSheet.create({
   colorLight: {
     color: '#D2D2D2'
   },
+  white: {
+    color: 'white'
+  }
 });
 
 export default Label;
